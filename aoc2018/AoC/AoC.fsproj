@@ -8,7 +8,7 @@
     <Content Include="Day*\*.data">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Compile Include="Day1\Problem1.fs" />
+    <Compile Include="Day*\*.fs" />
     <Compile Include="AoC.fs" />
     <None Include="App.config" />
   </ItemGroup>
