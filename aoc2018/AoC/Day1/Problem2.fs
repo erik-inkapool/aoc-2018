@@ -1,33 +1,32 @@
-module Problem2
+namespace Day1
 
-open System.IO
+module Problem2 =
+    open System.IO
 
-let Solve = 
-    let numberParser (line : string) = line |> int
+    let Solve = 
+        let repeatingNumberFinderFactory() = 
+            let mutable numbersSoFar = Set.empty
+            let mutable accumulator = 0
 
-    let repeatingNumberFinderFactory() = 
-        let mutable numbersSoFar = Map.empty
-        let mutable accumulator = 0
+            let repeatingNumberFinder n =
+                accumulator <- accumulator + n
+                if numbersSoFar.Contains accumulator
+                    then Some accumulator 
+                    else
+                        numbersSoFar <- numbersSoFar.Add accumulator
+                        None
 
-        let repeatingNumberFinder n =
-            accumulator <- accumulator + n
-            if numbersSoFar.ContainsKey accumulator
-                then Some accumulator 
-                else
-                    numbersSoFar <- numbersSoFar.Add (accumulator, true)
-                    None
+            repeatingNumberFinder
 
-        repeatingNumberFinder
+        // repeat infinitely
+        let repeat items = 
+            seq { while true do yield! items }
 
-    // repeat infinitely
-    let repeat items = 
-        seq { while true do yield! items }
+        let getInput = fun () -> File.ReadAllLines("Day1\\problem1.data")
 
-    let getInput = fun () -> File.ReadAllLines("Day1\\problem1.data")
+        let repeatingNumber = repeatingNumberFinderFactory()
 
-    let repeatingNumbers = repeatingNumberFinderFactory()
-
-    getInput()
-        |> Seq.map numberParser
-        |> repeat
-        |> Seq.pick repeatingNumbers
+        getInput()
+            |> Seq.map int
+            |> repeat
+            |> Seq.pick repeatingNumber
