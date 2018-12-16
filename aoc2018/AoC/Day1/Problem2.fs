@@ -2,6 +2,8 @@ module Day1.Problem2
     open System.IO
 
     let Solve = 
+        let getInput = fun () -> File.ReadAllLines("Day1\\data")
+
         let repeatingNumberFinderFactory() = 
             let mutable numbersSoFar = Set.empty
             let mutable accumulator = 0
@@ -19,8 +21,6 @@ module Day1.Problem2
         // repeat infinitely
         let repeat items = 
             seq { while true do yield! items }
-
-        let getInput = fun () -> File.ReadAllLines("Day1\\data")
 
         let repeatingNumber = repeatingNumberFinderFactory()
 

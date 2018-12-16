@@ -2,6 +2,8 @@ module Day2.Problem1
     open System.IO
     
     let Solve = 
+        let getInput = fun () -> File.ReadAllLines("Day2\\data")
+        
         let uniqueCounts line =
             line 
             |> Seq.toList 
@@ -14,7 +16,6 @@ module Day2.Problem1
             |> Seq.filter id 
             |> Seq.length
 
-        let getInput = fun () -> File.ReadAllLines("Day2\\data")
 
         let counts = getInput() |> Seq.map uniqueCounts
 
