@@ -20,7 +20,7 @@ module Day1.Problem2
         let repeat items = 
             seq { while true do yield! items }
 
-        let getInput = fun () -> File.ReadAllLines("Day1\\problem1.data")
+        let getInput = fun () -> File.ReadAllLines("Day1\\data")
 
         let repeatingNumber = repeatingNumberFinderFactory()
 

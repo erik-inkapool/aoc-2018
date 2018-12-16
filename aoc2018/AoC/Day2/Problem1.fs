@@ -14,7 +14,7 @@ module Day2.Problem1
             |> Seq.filter id 
             |> Seq.length
 
-        let getInput = fun () -> File.ReadAllLines("Day2\\problem1.data")
+        let getInput = fun () -> File.ReadAllLines("Day2\\data")
 
         let counts = getInput() |> Seq.map uniqueCounts
 
