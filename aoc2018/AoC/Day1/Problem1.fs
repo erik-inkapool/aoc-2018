@@ -1,6 +1,4 @@
-namespace Day1
-
-module Problem1 =
+module Day1.Problem1
     open System.IO
 
     let Solve = 
